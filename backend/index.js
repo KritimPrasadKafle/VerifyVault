@@ -1,6 +1,7 @@
 import express from 'express';
 import { connectDB } from './db/connectDB.js';
 import dotenv from 'dotenv';
+import authrouter from './routes/auth.route.js';
 const app = express()
 
 dotenv.config();
@@ -8,6 +9,8 @@ dotenv.config();
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
+
+app.use("/api/auth", authrouter);
 
 app.listen(3000, () => {
   connectDB();
